@@ -1,10 +1,10 @@
 *
 !.gitignore
-!starship.toml
-!axedit/
-!hypr/
-!neofetch/
-!kitty/
-!waybar/
-!fish/
 !README.md
+!starship.toml
+!axedit/*
+!hypr/*
+!neofetch/*
+!kitty/*
+!waybar/*
+!fish/*
