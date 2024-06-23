@@ -1,0 +1,7 @@
+2024-06-23 09:16:56.295216 | lid closed
+
+output:
+ok
+
+error:
+No error :)

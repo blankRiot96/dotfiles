@@ -4,13 +4,13 @@
 !starship.toml
 !axedit/
 !axedit/**
-!hypr/*
+!hypr/
 !hypr/**
 !neofetch/
 !neofetch/**
 !kitty/
 !kitty/**
-!waybar/*
+!waybar/
 !waybar/**
-!fish/*
+!fish/
 !fish/** 
