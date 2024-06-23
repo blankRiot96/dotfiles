@@ -1,7 +1,10 @@
 *
+
 !.gitignore
 !README.md
 !starship.toml
+!.vimrc
+
 !axedit/
 !axedit/**
 !hypr/
