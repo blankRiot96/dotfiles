@@ -1,0 +1,1 @@
+Some dotfiles for my hyprdots waybar
