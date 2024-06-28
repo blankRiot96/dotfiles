@@ -5,8 +5,8 @@ name = "catppuccin-mocha"
 # Define a font family or a font path
 # Paths will take priority
 # To disable the path or family set it to false
-family = "Maple Mono NF" 
-path = false
+family = false
+path = "default"
 size = 24 
 
 [line_numbers]
