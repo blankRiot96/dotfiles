@@ -27,6 +27,7 @@ disabled = true # Disabled by default
 [directory]
 style = "fg:#45475A bg:#89B4FA"
 format = "[ $path ]($style)"
+truncation_length = 1
 
 # Here is how you can shorten some long paths by text replacement
 # similar to mapped_locations in Oh My Posh:

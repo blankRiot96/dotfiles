@@ -1,7 +1,7 @@
-2024-07-01 10:50:43.843784 | lid closed
+2024-07-08 19:33:08.598651 | lid opened
 
 output:
-ok
+okok
 
 error:
 No error :)

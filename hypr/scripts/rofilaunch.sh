@@ -23,7 +23,7 @@ esac
 # read hypr theme border
 
 wind_border=$(( hypr_border * 3 ))
-elem_border=`[ $hypr_border -eq 0 ] && echo "10" || echo $(( hypr_border * 2 ))`
+elem_border=`[ $hypr_border -eq 0 ] && echo "10" || echo $(( hypr_border * 2 ))` 
 r_override="window {border: ${hypr_width}px; border-radius: ${wind_border}px;} element {border-radius: ${elem_border}px;}"
 
 
@@ -42,4 +42,6 @@ icon_override="configuration {icon-theme: \"${icon_override}\";}"
 # launch rofi
 
 rofi -show $r_mode -theme-str "${fnt_override}" -theme-str "${r_override}" -theme-str "${icon_override}" -config "${roconf}"
+# rofi -show $r_mode 
+
 

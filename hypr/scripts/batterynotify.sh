@@ -9,7 +9,6 @@ Edit $batterynotify_conf  for options.
 
       STATUS      THRESHOLD    INTERVAL
       Full        $battery_full_threshold          $notify Minutes  
-      Critical    $battery_critical_threshold           $timer Seconds then '$execute_critical'
       Low         $battery_low_threshold           $interval Percent    then '$execute_low'
       Unplug      $unplug_charger_threshold          $interval Percent   then '$execute_unplug'
 
@@ -48,21 +47,21 @@ fn_percentage () {
                         count=$(( timer > $mnt ? timer :  $mnt )) # reset count
                         while [ $count -gt 0 ] && [[ $battery_status == "Discharging"* ]]; do
                         for battery in /sys/class/power_supply/BAT*; do  battery_status=$(< "$battery/status") ; done
-                        if [[ $battery_status != "Discharging" ]] ; then break ; fi
-                            fn_notify "-t 5000 -r 69 " "CRITICAL" "Battery Critically Low" "$battery_percentage% is critically low. Device will execute $execute_critical in $((count/60)):$((count%60)) ."
-                            count=$((count-1))
-                            sleep 1  
-                        done
-                        [ $count -eq 0 ] && fn_action
+                        # if [[ $battery_status != "Discharging" ]] ; then break ; fi
+                        #     fn_notify "-t 5000 -r 69 " "CRITICAL" "Battery Critically Low" "$battery_percentage% is critically low. Device will execute $execute_critical in $((count/60)):$((count%60)) ."
+                        #     count=$((count-1))
+                        #     sleep 1  
+                        # done
+                        # [ $count -eq 0 ] && fn_action
                     elif [[ "$battery_percentage" -le "$battery_low_threshold" ]] && [[ "$battery_status" == "Discharging" ]] && (( (last_notified_percentage - battery_percentage) >= $interval )); then  if $verbose; then echo  "Prompt:LOW: $battery_low_threshold $battery_status $battery_percentage" ; fi
                         fn_notify  "-t 5000 " "CRITICAL" "Battery Low" "Battery is at $battery_percentage%. Connect the charger."
                         last_notified_percentage=$battery_percentage
                     fi
 }
-fn_action () { #handles the $execute_critical command #? This is special as it will try to execute always
-                  count=$(( timer > $mnt ? timer :  $mnt )) # reset count
-                  nohup $execute_critical
-}
+# fn_action () { #handles the $execute_critical command #? This is special as it will try to execute always
+#                   count=$(( timer > $mnt ? timer :  $mnt )) # reset count
+#                   nohup $execute_critical
+# }
 
 fn_status () {
 if [[ $battery_percentage -ge $battery_full_threshold ]] && [[ "$battery_status" != *"Discharging"* ]]; then echo "Full and $battery_status"
@@ -153,7 +152,7 @@ battery_low_threshold=${battery_low_threshold:-20}
 timer=${timer:-120}
 notify=${notify:-1140}
 interval=${interval:-5}
-execute_critical=${execute_critical:-"systemctl suspend"}
+# execute_critical=${execute_critical:-"systemctl suspend"}
 execute_low=${execute_low:-}
 execute_unplug=${execute_unplug:-}
 
@@ -184,8 +183,6 @@ battery_critical_threshold=10
 battery_low_threshold=20
     #? Unplug charger threshold (default: 80%)
 unplug_charger_threshold=80
-    #? Countdown timer before executing execute_critical (default: 120 seconds) 
-timer=120
     #? Notify interval for Battery Full Status (default: 1140 mins/ 1 day)
 notify=1140
     #? Notify interval on LOW and UNPLUG Status (default: 5%)
@@ -196,8 +193,6 @@ undock=false
 execute_unplug=\"\"
     #? Command/script to execute at maximum battery_low_threshold
 execute_low=\"\"
-    #? Command/script to execute if battery on critical threshold (default: systemctl suspend)
-execute_critical=\"systemctl suspend\"
     #? Command/script to execute when battery is discharging, Required undock=true
 execute_discharging=\"\"
     #? Command/script to execute when battery is charging, Required undock=true
