@@ -7,10 +7,10 @@ name = "catppuccin-mocha"
 # To disable the path or family set it to false
 family = false
 path = "default"
-size = 24 
+size = 28 
 
 [line_numbers]
-relative = true
+relative = false
 
 [opacity]
 # Interval [0, 1]
