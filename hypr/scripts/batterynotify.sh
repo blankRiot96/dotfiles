@@ -43,10 +43,10 @@ fn_percentage () {
                     if [[ "$battery_percentage" -ge "$unplug_charger_threshold" ]] &&  [[ "$battery_status" != "Discharging" ]] && [[ "$battery_status" != "Full" ]]  && (( (battery_percentage - last_notified_percentage) >= $interval )); then if $verbose; then echo "Prompt:UNPLUG: $battery_unplug_threshold $battery_status $battery_percentage" ; fi
                         fn_notify  "-t 5000 " "CRITICAL" "Battery Charged" "Battery is at $battery_percentage%. You can unplug the charger!"
                         last_notified_percentage=$battery_percentage
-                    elif [[ "$battery_percentage" -le "$battery_critical_threshold" ]]; then
-                        count=$(( timer > $mnt ? timer :  $mnt )) # reset count
-                        while [ $count -gt 0 ] && [[ $battery_status == "Discharging"* ]]; do
-                        for battery in /sys/class/power_supply/BAT*; do  battery_status=$(< "$battery/status") ; done
+                    # elif [[ "$battery_percentage" -le "$battery_critical_threshold" ]]; then
+                    #     count=$(( timer > $mnt ? timer :  $mnt )) # reset count
+                    #     while [ $count -gt 0 ] && [[ $battery_status == "Discharging"* ]]; do
+                    #     for battery in /sys/class/power_supply/BAT*; do  battery_status=$(< "$battery/status") ; done
                         # if [[ $battery_status != "Discharging" ]] ; then break ; fi
                         #     fn_notify "-t 5000 -r 69 " "CRITICAL" "Battery Critically Low" "$battery_percentage% is critically low. Device will execute $execute_critical in $((count/60)):$((count%60)) ."
                         #     count=$((count-1))
