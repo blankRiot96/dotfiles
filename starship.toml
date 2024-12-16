@@ -6,6 +6,9 @@ $git_branch\
 [ ](fg:#94E2D5)\
 """
 
+[python]
+detect_files = ["silly"]
+
 # Disable the blank line at the start of the prompt
 # add_newline = false
 
