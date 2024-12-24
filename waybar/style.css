@@ -73,7 +73,7 @@
 }
 
 #battery {
-  color: @green;
+  color: @white;
 }
 
 #battery.charging {
