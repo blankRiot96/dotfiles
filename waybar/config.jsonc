@@ -10,11 +10,10 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "tray",
     "pulseaudio",
-    "backlight",
     "battery",
     "clock",
-    "tray",
     "custom/lock",
     "custom/power"
   ],
