@@ -1,0 +1,11 @@
+[manager]
+sort_by = "mtime"
+show_hidden = true
+
+[opener]
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" }
+]
+edit = [
+	{ run = 'nvim "$@"', block = true, for = "unix" }
+]

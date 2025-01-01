@@ -10,11 +10,16 @@ alias lla="ls -la"
 alias lt="ls --tree"
 
 alias c="clear"
-alias py="python3.12"
-
+alias py="python3.13"
+alias pip="py -m pip"
 
 source (/usr/bin/starship init fish --print-full-init | psub)
 
 if test -f venv/bin/activate.fish
     source venv/bin/activate.fish
+end
+
+
+if test -f .venv/bin/activate.fish
+    source .venv/bin/activate.fish
 end
