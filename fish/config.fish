@@ -15,11 +15,20 @@ alias pip="py -m pip"
 
 # source (/usr/bin/starship init fish --print-full-init | psub)
 
-if test -f venv/bin/activate.fish
-    source venv/bin/activate.fish
-end
+function venv_test
+    if test -f venv/bin/activate.fish
+        source venv/bin/activate.fish
+    end
 
 
-if test -f .venv/bin/activate.fish
-    source .venv/bin/activate.fish
+    if test -f .venv/bin/activate.fish
+        source .venv/bin/activate.fish
+    end
 end
+
+function cd
+    builtin cd $argv[1]
+    venv_test
+end
+
+venv_test

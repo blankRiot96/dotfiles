@@ -102,7 +102,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -405,15 +405,18 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
-      vim.keymap.set('n', '<leader>\\', function()
-        vim.cmd 'vsplit'
-        builtin.find_files()
-      end, { desc = '[\\] Open and VSplit' })
-
-      vim.keymap.set('n', '<leader>-', function()
-        vim.cmd 'split'
-        builtin.find_files()
-      end, { desc = '[-] Open and Split' })
+      vim.keymap.set('n', '<leader>b', function()
+        vim.cmd 'b#'
+      end, { desc = 'Go to previous buffer' })
+      --      vim.keymap.set('n', '<leader>\\', function()
+      --        vim.cmd 'vsplit'
+      --        builtin.find_files()
+      --      end, { desc = '[\\] Open and VSplit' })
+      --
+      --      vim.keymap.set('n', '<leader>-', function()
+      --        vim.cmd 'split'
+      --        builtin.find_files()
+      --      end, { desc = '[-] Open and Split' })
 
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -796,7 +799,7 @@ require('lazy').setup({
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<Enter>'] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
