@@ -1,4 +1,4 @@
-#!/bin/python3.12
+#!/bin/python3.13
 
 import datetime
 import shlex
